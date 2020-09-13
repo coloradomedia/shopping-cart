@@ -1,0 +1,88 @@
+$fontWhite: #ffffff;
+$mainBackground: #eeeeee;
+$primaryColor: #ffae00;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+}
+body {
+  font-family: 'Lato', sans-serif;
+}
+.navbar {
+  position: sticky;
+  top: 0;
+  height: 6rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: $mainBackground;
+  z-index: 1;
+  .navbar-center {
+    width: 100%;
+    max-width: 117rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    .nav-icon {
+      font-size: 2.8rem;
+    }
+    .logo {
+      font-size: 3rem;
+      letter-spacing: 0.5rem;
+      font-weight: bold;
+    }
+    .cart-btn {
+      position: relative;
+      cursor: pointer;
+    }
+    .cart-items {
+      position: absolute;
+      top: -1rem;
+      right: -1.3rem;
+      background: #ff4800;
+      padding: 0.1rem 0.5rem;
+      color: $fontWhite;
+      border-radius: 0.7rem;
+      font-size: 1.5em;
+    }
+  }
+}
+.hero {
+  min-height: calc(100vh - 6rem);
+  background: url('../img/background.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .banner {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    padding: 3rem;
+    .banner-title {
+      font-size: 6.5rem;
+      text-transform: uppercase;
+      margin-bottom: 4.5rem;
+    }
+    .banner-btn {
+      padding: 1.5rem 4.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6rem;
+      font-size: 1.5rem;
+      background: $primaryColor;
+      border: none;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      &:hover {
+        background: transparent;
+        color: $primaryColor;
+      }
+    }
+  }
+}
