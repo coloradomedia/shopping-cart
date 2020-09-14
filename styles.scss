@@ -33,6 +33,7 @@ body {
     padding: 0 2rem;
     .nav-icon {
       font-size: 2.8rem;
+      cursor: pointer;
     }
     .logo {
       font-size: 3rem;
@@ -87,6 +88,9 @@ body {
         // color: $primaryColor;
         border: 3px solid $primaryColor;
       }
+      &:focus {
+        outline: none;
+      }
     }
   }
 }
@@ -115,8 +119,10 @@ body {
         overflow: hidden;
         .bag-btn {
           position: absolute;
-          top: 70%;
-          right: 0;
+          top: 50%;
+          right: 50%;
+          transform: translate(50%, -50%);
+          opacity: 0;
           background: $primaryColor;
           border: none;
           text-transform: uppercase;
@@ -124,10 +130,12 @@ body {
           letter-spacing: 0.2rem;
           font-weight: bold;
           transition: $mainTransition;
-          transform: translateX(101%);
           cursor: pointer;
           &:hover {
             color: $fontWhite;
+          }
+          &:focus {
+            outline: none;
           }
           .fa-shopping-cart {
             margin-right: 0.8rem;
@@ -135,7 +143,7 @@ body {
         }
         &:hover {
           .bag-btn {
-            transform: translateX(0);
+            opacity: 1;
           }
           .product-img {
             opacity: 0.5;
