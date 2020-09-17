@@ -150,12 +150,35 @@ class UI {
       } else if (e.target.classList.contains('fa-chevron-up')) {
         let addAmount = e.target;
         let id = addAmount.dataset.id;
+        let tempItem = cart.find((item) => item.id === id);
+        tempItem.amount = tempItem.amount + 1;
+        Storage.saveCart(cart);
+        this.setCartValues(cart);
+        addAmount.nextElementSibling.innerText = tempItem.amount;
+      } else if (e.target.classList.contains('fa-chevron-down')) {
+        let lowAmount = e.target;
+        let id = lowAmount.dataset.id;
+        let tempItem = cart.find((item) => item.id === id);
+        tempItem.amount = tempItem.amount - 1;
+        if (tempItem.amount > 0) {
+          Storage.saveCart(cart);
+          this.setCartValues(cart);
+          lowAmount.previousElementSibling.innerText = tempItem.amount;
+        } else {
+          cartContent.removeChild(lowAmount.parentElement.parentElement);
+          this.removeItem(id);
+        }
       }
     });
   }
   clearCart() {
     let cartItems = cart.map((item) => item.id);
     cartItems.forEach((id) => this.removeItem(id));
+
+    while (cartContent.children.length > 0) {
+      cartContent.removeChild(cartContent.children[0]);
+    }
+    this.hideCart();
   }
   removeItem(id) {
     cart = cart.filter((item) => item.id !== id);
@@ -164,9 +187,6 @@ class UI {
     let button = this.getSingleButton(id);
     button.disabled = false;
     button.innerHTML = `<i class="fas fa-shopping-cart"></i>add to bag`;
-    while (cartContent.children.length > 0) {
-      cartContent.removeChild(cartContent.children[0]);
-    }
   }
   getSingleButton(id) {
     return buttonsDOM.find((button) => button.dataset.id === id);
